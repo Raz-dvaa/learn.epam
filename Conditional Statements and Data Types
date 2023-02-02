@@ -1,0 +1,38 @@
+
+
+
+// 1
+let str = String('five');
+let bool = Boolean(true);
+let num = Number(5);
+
+console.log(str + bool); // fivetrue
+console.log(str + num); // five5
+console.log(num + bool); // 6
+
+// 2
+
+console.log(str * bool); // NaN
+console.log(str * num); // NaN
+console.log(num * bool); // 5
+
+// 3
+
+console.log(str / bool); // NaN
+console.log(str / num); // NaN
+console.log(num / bool); // 5
+
+// 4
+
+console.log(Number(str)); // NaN
+console.log(typeof Number(str)); // number
+console.log(Boolean(str)); // true
+console.log(typeof Boolean(str)); // boolean
+console.log(String(num)); // 5
+console.log(typeof String(num)); // string
+console.log(Boolean(num)); // true
+console.log(typeof Boolean(num)); // boolean
+console.log(Number(bool)); // 1
+console.log(typeof Number(bool)); // number
+console.log(String(bool)); // true
+console.log(typeof String(bool)); // string
