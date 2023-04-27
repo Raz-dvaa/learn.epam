@@ -1,0 +1,101 @@
+
+
+            // 1
+
+            let movies = ["Green mile", "Fight club", "Room", "Saw", "Silent hill"];
+
+            movies.forEach((film) => console.log(film));
+
+
+            // 2
+
+            let carManufacturers = ["Kia", "BMW", "Volvo", "Audi", "Ferrari"];
+
+            carManufacturers = carManufacturers.join(', '); // Kia, BMW, Volvo, Audi, Ferrari
+
+            carManufacturers = carManufacturers.split(', ') // ['Kia', 'BMW', 'Volvo', 'Audi', 'Ferrari']
+
+            // 3
+
+            let friends = ["Alexey", "Konstantin", "Ruslan", "Andrey", "Ivan"];
+
+            for (let el in friends) {
+                friends[el] = `Hello, ${friends[el]}!`
+            }
+            
+            // 4
+
+            let numArr = [-5, -0.000000001, 0,  1, 0.00000000001, 5];
+
+            for (let num in numArr) {
+                numArr[num] = Boolean(numArr[num])
+            };
+
+            
+            // 5
+
+            let arr = [1,6,7,8,3,4,5,6];
+
+            arr = arr.sort((a, b) => b - a); // OR just [1,6,7,8,3,4,5,6].sort((a, b) => b - a)
+
+            
+
+            // 6
+
+            let arr = [1,6,7,8,3,4,5,6];
+            arr = arr.filter((e) => e > 3); // OR just [1,6,7,8,3,4,5,6].filter((e) => e > 3) 
+            
+            
+            // 7
+
+            function findIndex(arr, num) {
+                return arr.findIndex((n) => n === num);
+            }
+
+            // 8
+            
+            let a = 20;
+            
+            while (a >= 10) {
+                console.log(a);
+                a--;
+            }
+            
+            // 9
+
+            function primeNum(num) {
+                if (num < 2) return false;
+                if (num === 2) return true;
+                let count = 0;
+                for (let i = 2; i < num; i++) {
+                    if (num % i === 0) count++;
+                }
+                 if (count === 0) {
+                    return true;
+                 } else return false;
+            }
+
+            let endNum = 1000; // 1000 is just for example, if there will not be a border, numbers  printed in console until error
+
+            for (let i = 0; i <= endNum; i++) {
+            if (primeNum(i)) {
+                console.log(i)
+            }
+            }
+
+
+            // 10
+
+            let endNum = 1000; // the same idea about border
+
+            for (let i = 0; i < endNum; i++) {
+                if (i % 2 !== 0) {
+                    console.log(i)
+                }
+            }
+
+
+           
+
+
+            
