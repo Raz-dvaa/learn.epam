@@ -5,6 +5,7 @@
     let car = {
 
       "color": "black"
+      
     };
 
     //     2
@@ -13,7 +14,7 @@
 
     //     3
 
-    car.power = () => console.log(horsepower) // or "100 hp"
+    car.power = () => console.log("100 hp")
 
     //     4
 
