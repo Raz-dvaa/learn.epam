@@ -1,1 +1,66 @@
 
+
+    //     1
+
+    let car = {
+
+      "color": "black"
+    };
+
+    //     2
+    
+    car.color = "green";
+
+    //     3
+
+    car.power = () => console.log(horsepower) // or "100 hp"
+
+    //     4
+
+    let addAcceptedFruits = (pears, apples) => pears + apples;
+
+    //     5
+
+    function showName(name, arr) {
+
+        if (arr.find(e => e == name)) {
+            console.log(`Hello ${name}!`)
+        } else {
+            console.log ("There is no such name!")
+        };
+    };
+
+    let terminalNames = ["Ven", "Roman", "Elena"]; // saved names in the payment terminal
+
+
+    showName("Roman", terminalNames) // Hello Ven!
+    showName("Max", terminalNames) // There is no such name!
+
+    //     6
+
+    let calculateType = (arg) => console.log(typeof arg);
+    
+    //     7
+
+    function primeNum(num) {
+
+        if (num === 2 || num === 3) {
+            return true;
+        } else if (num < 2) {
+            return false;
+        } else {
+            if ( num % 2 === 0 || num % 3 === 0) {
+                return false;
+            }
+        } return true;
+      }
+
+    
+
+
+
+    
+
+
+
+
