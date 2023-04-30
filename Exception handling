@@ -1,0 +1,18 @@
+
+    try {
+        console.log(a);
+        let a = 3;
+    } catch (err) {
+        console.log("‘let must be declared’ before use")    // OR console.log(err.message)
+    }
+
+
+    let result = Number();
+    let a = 1;
+    let b = 0;
+    try {
+        result = a / b;
+        if (b === 0) throw new Error("'cannot be divided by zero'")
+    } catch (err) {
+        console.log(err.message)
+    }
