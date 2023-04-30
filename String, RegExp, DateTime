@@ -1,0 +1,28 @@
+
+      /////////////////     1
+
+let str = "ahb acb aeb aeeb adcb axeb";
+let res = str.match(/a.b/g) 
+console.log(res) // ['ahb', 'acb', 'aeb']
+
+
+      /////////////////     2
+
+let str = "2 + 3 223 2223";
+let res = str.match(/2 \+ 3/);
+console.log(res);
+
+
+      /////////////////     3
+
+let date = new Date();
+
+let day = date.getDate() ;
+let month = date.getMonth(); // OR if we want to see "April" >> date.toLocaleDateString('default', {month: 'long'}); 
+let year =  date.getFullYear();
+
+console.log(day) // OR without creating variable >> console.log(date.getDate())
+console.log(month)
+console.log(year)
+
+
