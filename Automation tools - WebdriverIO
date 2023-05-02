@@ -1,0 +1,90 @@
+
+const { readFile } = require('fs');
+const { writeFile } = require('node:fs/promises');
+
+
+describe("Test suite", () => {
+
+    const code = [
+    'git config --global user.name "New Sheriff in Town"',
+    'git reset $ (git commit-tree HEAD ^ {tree} -m "Legacy code")',
+    'git push origin master --force'];
+
+        // 1
+    it("Create the new Paste", async () => {
+
+        await browser.url('https://pastebin.com');
+        await $('textarea[id="postform-text"]').setValue("Hello from WebDriver"); // Code: "Hello from WebDriver"
+
+        await $('[id="select2-postform-expiration-container"]').click();
+        let x = await $('.select2-results__options');
+        await x.$$('li')[2].click(); // Paste Expiration: "10 Minutes"
+
+        await $('#postform-name').setValue('helloweb'); // Paste Name / Title: "helloweb"
+
+        await $('button[class="btn -big"]').click(); // Press 'Create New Paste'
+        
+    })
+
+
+    // 2
+
+
+    it("2. Create a New Paste with the following details:", async () => {
+        await browser.url('https://pastebin.com/');
+
+        await $('textarea[id="postform-text"]').addValue(code[0]);
+        await browser.keys('Enter');
+        await $('textarea[id="postform-text"]').addValue(code[1]);
+        await browser.keys('Enter');
+        await $('textarea[id="postform-text"]').addValue(code[2]);  // Code
+        
+
+        await $('div[class="form-group field-postform-format"]').$('div').click();
+        await $('/html/body/span[2]/span/span[2]/ul/li[2]/ul/li[1]').click(); // Syntax Highlighting: "Bash"
+     
+        
+        await $('#select2-postform-expiration-container').click();
+        await $('/html/body/span[2]/span/span[2]/ul/li[3]').click(); // Paste Expiration: "10 Minutes"
+
+        await $('#postform-name').setValue('how to gain dominance among developers'); // Paste Name / Title: "how to gain dominance among developers"
+
+        await $('button[class="btn -big"]').click(); // Press 'Create New Paste'
+
+        let curUrl = await browser.getUrl();
+        writeFile('url.txt', curUrl); // save current url of created Paste to use it in task 3
+    })
+
+
+    // 3
+   
+    it("Browser page title matches Paste Name / Title", async () => {
+        await readFile('/Users/veniaminakiev/node_modules/wdio/url.txt', 'utf-8', async (err, data) => {
+        await browser.url(data); 
+        })
+
+        let pasteName = await $('.info-top').$('h1').getText();
+        expect(pasteName).toEqual('how to gain dominance among developers');
+        expect(browser).toHaveTitleContaining('how to gain dominance among developers');   
+    })
+
+    it("Syntax is suspended for bash", async () => {
+        await readFile('/Users/veniaminakiev/node_modules/wdio/url.txt', 'utf-8', async (err, data) => {
+            await browser.url(data); 
+            })
+        let syntax = await $('.left').$('a').getText();
+        expect(syntax).toEqual('Bash');  
+    })
+
+    it("Check that the code matches the one entered in paragraph 2", async () => {
+        await readFile('/Users/veniaminakiev/node_modules/wdio/url.txt', 'utf-8', async (err, data) => {
+            await browser.url(data); 
+            })
+        let line1 = await $('.bash').$$('li')[0].getText();
+        let line2 = await $('.bash').$$('li')[1].getText();
+        let line3 = await $('.bash').$$('li')[2].getText();
+        expect(line1).toEqual(code[0]);  
+        expect(line2).toEqual(code[1]);
+        expect(line3).toEqual(code[2]);
+    })
+    })  
